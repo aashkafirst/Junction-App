@@ -1,0 +1,20 @@
+[layout="column"],
+[layout="row"] {
+	display: flex;
+}
+
+[layout="column"] {
+	flex-direction: column;
+}
+
+[layout="row"] {
+	flex-direction: row;
+}
+
+[layout-wrap] {
+	flex-wrap: wrap;
+}
+
+[layout-align="center"] {
+	justify-content: center;
+}

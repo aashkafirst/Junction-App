@@ -1,0 +1,22 @@
+.home {
+
+	.duration {
+		position : absolute;
+	   	bottom : 6%;
+    	right : 0%;
+	}
+
+	.duration span {
+		color : white;
+   		font : bold 14px/35px Helvetica, Sans-Serif;
+   		letter-spacing : -1px;
+   		background : rgb(0, 0, 0);
+   		background : rgba(0, 0, 0, 0.7);
+   		padding : 5px;
+	}
+
+	.button-text {
+		font-size: 15px;
+	}
+
+}

@@ -1,0 +1,34 @@
+<ion-modal-view ng-controller="SharedWithUController as SharedWithUCtrl" class="sharedWithU-modal">
+  <ion-content
+    overflow-scroll="false"
+    scroll="false">
+    <div ng-if="($root.isOnline !== null) && !$root.isOnline">
+      <img src="img/noInternet.png" class="no-internet-landscape">
+    </div>
+    <div ng-if="$root.isOnline">
+      <div class="embed-responsive embed-responsive-16by9">
+        <youtube-video
+          class = "embed-responsive-item sharedWithU-player"
+          video-id = "HomeCtrl.sharedWithUCrisp.videoId"
+          player = "sharedWithUPlayer"
+          player-vars = "HomeCtrl.sharedWithUVars">
+        </youtube-video>
+        <div class="corner-btn">
+          <i
+            class="icon ion-close-circled sop-icon-20 sop-white-icon"
+            ng-click="HomeCtrl.sharedWithU.close()">
+          </i>
+        </div>  
+      </div>
+      <div
+        class="annotation-container"
+        ng-if="SharedWithUCtrl.isPlayerReady">
+          <p
+            class="annotation"
+            ng-if="HomeCtrl.sharedWithUCrisp.annotation">
+            {{HomeCtrl.sharedWithUCrisp.annotation}}
+          </p>  
+      </div>
+    </div>  
+  </ion-content>
+</ion-modal-view>

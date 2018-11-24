@@ -15,9 +15,17 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+$royal : #F13E00 !default; //$app-theme-color
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
-
+@import "www/common/module.app";
+@import "www/menu/module.app";
+@import "www/home/module.app";
+@import "www/search/module.app";
+@import "www/video/module.app";
+@import "www/myCrisps/module.app";
+@import "www/sharedCrisps/module.app";

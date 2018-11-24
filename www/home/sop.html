@@ -1,0 +1,34 @@
+<ion-modal-view ng-controller="SopController as SopCtrl" class="sop-modal">
+  <ion-content
+    overflow-scroll="false"
+    scroll="false">
+    <div ng-if="($root.isOnline !== null) && !$root.isOnline">
+        <img src="img/noInternet.png" class="no-internet-landscape">
+      </div>
+    <div ng-if="$root.isOnline">
+      <div class="embed-responsive embed-responsive-16by9">
+        <youtube-video
+          class = "embed-responsive-item sop-player"
+          video-id = "HomeCtrl.sop.videoId"
+          player = "sopPlayer"
+          player-vars = "HomeCtrl.sopVars">
+        </youtube-video>
+        <div class="corner-btn">
+          <i
+            class="icon ion-close-circled sop-icon-20 sop-white-icon"
+            ng-click="SopCtrl.close()">
+          </i>
+        </div>  
+      </div>
+      <div
+        class="annotation-container"
+        ng-if="SopCtrl.isPlayerReady">
+          <p
+            class="annotation"
+            ng-if="HomeCtrl.sop.annotation">
+            {{HomeCtrl.sop.annotation}}
+          </p>  
+      </div>
+    </div>  
+  </ion-content>
+</ion-modal-view>

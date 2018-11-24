@@ -1,0 +1,25 @@
+.spinner {
+	display: inline-block;
+	z-index: 5;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	top: 50%;
+	left: 46%;
+	border: solid 2px transparent;
+	border-left-color: #F13E00;
+	border-top-color: #F13E00;
+	border-radius: 50%;
+	animation: spinner 0.8s linear infinite;
+}
+
+.inline-spinner{
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
+@keyframes spinner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

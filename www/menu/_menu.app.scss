@@ -1,0 +1,20 @@
+.menu-content .list {
+	margin-top: 15px;
+}
+
+.menu-header {
+	
+	height: 60px;
+
+	.profile-pic-container {
+		width: 100%;
+		padding-left: 12px;
+		//text-align: center;
+
+		.profile-pic {
+			border-radius : 50%;
+			width: 30px;
+		}
+	
+	}
+}

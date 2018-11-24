@@ -1,0 +1,57 @@
+<ion-view view-title="ShortOkPlz!" class="home">
+  <ion-content overflow-scroll="true">
+  	<div layout="row" layout-align="center" layout-wrap="">
+  		<div ng-if="($root.isOnline !== null) && !$root.isOnline">
+  			<img src="img/noInternet.png" class="no-internet-portrait">
+  		</div>
+  		<div 
+  			ng-if="$root.isOnline"
+  			class="list card"
+  			ng-repeat="video in HomeCtrl.videos track by $index">
+			<div class="item item-text-wrap">
+				<a
+					href="#/app/home/{{video.id}}"
+					ng-click="HomeCtrl.getVideoPicUrl(video.snippet.thumbnails.high.url)">
+					<h3>{{video.snippet.title}}</h3>
+				</a>
+				<h5>{{video.snippet.channelTitle}}</h5>
+			</div>
+			<!-- <div class="item item-text-wrap">
+				<a
+					href="#/app/home/{{video.id}}"
+					ng-click="HomeCtrl.getVideoPicUrl(video.snippet.thumbnails.high.url)">
+					<h3>{{video.snippet.channelTitle}}</h3>
+				</a>
+			</div> -->
+			<div class="item-image">
+				<a
+					href="#/app/home/{{video.id}}"
+					ng-click="HomeCtrl.getVideoPicUrl(video.snippet.thumbnails.high.url)">
+					<img ng-src="{{video.snippet.thumbnails.high.url}}">
+				</a>
+			</div>
+			<div>
+				<button 
+					class="button button-small button-default button-round button-royal"
+					ng-click="HomeCtrl.getSop(video.id)">
+					<span class="button-text">
+						Highlights
+					</span>
+					<ion-button-effect></ion-button-effect>
+				</button>
+				<p class="duration">
+					<span>
+						{{video.contentDetails.duration.hours}}&nbsp;:
+						{{video.contentDetails.duration.minutes}}&nbsp;:
+						{{video.contentDetails.duration.seconds}}
+					</span>
+				</p>
+			</div>
+    	</div>
+  	</div>
+  	<ion-infinite-scroll
+  		on-infinite="HomeCtrl.loadMoreVideos()"
+  		distance="10%">
+  	</ion-infinite-scroll>
+  </ion-content>
+</ion-view>

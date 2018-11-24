@@ -1,0 +1,35 @@
+.sop-modal {
+
+	width : 100%; 
+	left : 0%; 
+	right : 0%; 
+	top : 0%; 
+	bottom : 0%;
+
+	.embed-responsive.embed-responsive-16by9 {
+	  padding-bottom : 46%;
+	}
+
+	.sop-player {
+		height: 100%;
+	}
+
+	.corner-btn {
+		z-index : 25679;
+		position : absolute;
+		right : 0;
+	}
+
+	.annotation-container {
+		background: black;
+		opacity: 0.9;
+	}
+
+    .annotation {
+	    z-index : 25679;
+	    //display : block;
+	    color : white;
+	    text-align : center;
+    }
+
+}
