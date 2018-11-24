@@ -1,0 +1,36 @@
+.search {
+
+	margin-top: 50px;
+
+	.duration {
+		position : absolute;
+	   	bottom : 6%;
+    	right : 0%;
+	}
+
+	.duration span {
+		color : white;
+   		font : bold 14px/35px Helvetica, Sans-Serif;
+   		letter-spacing : -1px;
+   		background : rgb(0, 0, 0);
+   		background : rgba(0, 0, 0, 0.7);
+   		padding : 5px;
+	}
+
+	.button-text {
+		font-size: 15px;
+	}
+	
+}
+#searchInput_value {
+	display: block;
+    padding: 10px;
+    height: 34px;
+    color: #111;
+    vertical-align: middle;
+    font-size: 14px;
+    line-height: 14px;
+    width: 87vw ;
+    margin-left: 4px;
+    padding-right:5%;
+}

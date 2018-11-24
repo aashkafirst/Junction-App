@@ -1,0 +1,34 @@
+<ion-modal-view ng-controller="PlaySharedCrispsController as PlaySharedCrispsCtrl" class="playSharedCrisps-modal">
+  <ion-content
+    overflow-scroll="false"
+    scroll="false">
+    <div ng-if="($root.isOnline !== null) && !$root.isOnline">
+      <img src="img/noInternet.png" class="no-internet-landscape">
+    </div>
+    <div ng-if="$root.isOnline">
+      <div class="embed-responsive embed-responsive-16by9">
+        <youtube-video
+          class = "embed-responsive-item sharedCrisps-player"
+          video-id = "SharedCrispsCtrl.currentCrisp.videoId"
+          player = "sharedCrispsPlayer"
+          player-vars = "SharedCrispsCtrl.sharedCrispsVars">
+        </youtube-video>
+  	    <div class="corner-btn">
+  	    	<i
+            class="icon ion-close-circled sop-icon-20 sop-white-icon"
+  			    ng-click="SharedCrispsCtrl.sharedCrispsControls.close()">
+  		    </i>
+  	    </div>	
+      </div>
+      <div
+        class="annotation-container"
+        ng-if="PlaySharedCrispsCtrl.isPlayerReady">
+        	<p
+            class="annotation"
+            ng-if="SharedCrispsCtrl.currentCrisp.annotation">
+            {{SharedCrispsCtrl.currentCrisp.annotation}}
+        	</p>	
+      </div>
+    </div>	
+  </ion-content>
+</ion-modal-view>

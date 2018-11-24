@@ -1,0 +1,77 @@
+<ion-view hide-nav-bar="true">
+	<div class="bar bar-header bar-royal">
+		<button class="button button-clear" ng-click="SearchCtrl.goBack()" >
+    		<i class="icon ion-ios-arrow-back"></i>
+    	</button>
+		<div
+			angucomplete-alt
+			id="searchInput"
+			placeholder="Search videos..."
+			pause="100"
+		  	local-data="SearchCtrl.autoSearchResults"
+		  	local-search="SearchCtrl.youtubeSearch"
+		  	title-field="title"
+		  	selected-object="SearchCtrl.selected"
+		  	do-search="SearchCtrl.doSearch"
+		  	minlength="1"
+		  	input-class="form-control form-control-small"
+		  	match-class="highlight">
+		</div>
+    </div>
+  <ion-content overflow-scroll="true">
+  	<div class="search">
+  		<div ng-if="($root.isOnline !== null) && !$root.isOnline">
+  			<img src="img/noInternet.png" class="no-internet-portrait">
+  		</div>
+  		<div ng-if="$root.isOnline">
+		  	<div ng-show="!SearchCtrl.searched">
+				<h1>No results</h1>
+			</div>
+			<div 
+            	class="spinner"
+            	ng-show="SearchCtrl.searched && !SearchCtrl.searchResultsFound">
+        	</div>
+		    <div
+		    	class="list card"
+		    	ng-show="SearchCtrl.searched && SearchCtrl.searchResultsFound"
+		    	ng-repeat="result in SearchCtrl.searchResults track by $index">
+		    	<div class="item item-text-wrap">
+			        <a
+			        	href="#/app/search/{{result.id.videoId}}"
+			        	ng-click="SearchCtrl.getVideoPicUrl(result.snippet.thumbnails.high.url)">
+						<h3>{{result.snippet.title}}</h3>
+					</a>
+		      	</div>
+		    	<div class="item-image">
+				    <a
+				    	href="#/app/search/{{result.id.videoId}}"
+				    	ng-click="SearchCtrl.getVideoPicUrl(result.snippet.thumbnails.high.url)">
+						<img ng-src="{{result.snippet.thumbnails.high.url}}"/>
+					</a>
+		      	</div>
+			  	<div>
+				 	<button 
+				  		class="button button-small button-default button-round button-royal" 
+				  		ng-click="SearchCtrl.getSop(result.id.videoId)">
+				  		<span class="button-text">
+				  			Sop
+				  		</span>
+				  		<ion-button-effect></ion-button-effect>
+				    </button>
+				    <p class="duration">
+					  	<span>
+						  	{{result.duration.hours}}:
+						  	{{result.duration.minutes}}:
+						  	{{result.duration.seconds}}
+						</span>
+		            </p>
+			    </div>
+		    </div>
+		</div>
+    </div>
+    <ion-infinite-scroll
+  		on-infinite="SearchCtrl.loadMoreVideos()"
+  		distance="10%">
+  	</ion-infinite-scroll>
+  </ion-content>
+</ion-view>
