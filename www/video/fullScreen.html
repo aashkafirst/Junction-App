@@ -1,0 +1,94 @@
+<ion-modal-view ng-controller="FullScreenController as FullScreenCtrl" class="fs-modal">
+	<ion-content 
+		overflow-scroll="false"
+		scroll="false">
+		<div ng-if="($root.isOnline !== null) && !$root.isOnline">
+  			<img src="img/noInternet.png" class="no-internet-landscape">
+  		</div>
+		<div ng-if="$root.isOnline">
+			<div class="embed-responsive embed-responsive-16by9">
+		    	<youtube-video
+		    		player="fullScreenPlayer"
+		    		class="embed-responsive-item fs-player"
+		    		video-id="VideoCtrl.fullScreenId"
+		    		player-vars="VideoCtrl.videoVars">
+		    	</youtube-video>
+		    	<div class="corner-btn">
+					<i 
+		                class="icon ion-android-share-alt sop-icon-20 sop-white-icon m-10"
+		                ng-click="VideoCtrl.shareCrisps()">        
+			        </i>
+					<i
+						class="icon ion-close-circled sop-icon-20 sop-white-icon m-10"
+						ng-click="VideoCtrl.fullScreen.close()">
+					</i>
+				</div>
+	    	</div>
+		    <div class="player-controls-container" ng-if="FullScreenCtrl.isPlayerReady">
+		        <div class="row">
+	                <i 
+	                class="icon ion-play sop-white-icon sop-icon-20 m-5"
+	                ng-show="VideoCtrl.fullScreen.isPaused"
+	                ng-click="VideoCtrl.fullScreen.playVideo()">
+	                </i>
+	                <i 
+	                    class="icon ion-pause sop-white-icon sop-icon-20 m-5"
+	                    ng-show="!VideoCtrl.fullScreen.isPaused"
+	                    ng-click="VideoCtrl.fullScreen.pauseVideo()">
+	                </i>  
+	                <p class="duration m-5">
+	                    {{VideoCtrl.fullScreen.player.currentTime}} / {{VideoCtrl.fullScreen.player.duration}}   
+	                </p>  
+	                <i
+	                    class="icon ion-plus-round sop-white-icon sop-icon-20 m-5"
+	                    ng-show="!VideoCtrl.hasCrispStarted"
+	                    ng-click="VideoCtrl.startCrisp(VideoCtrl.fullScreen.progressBar)">
+	                </i>
+	                <i 
+                        class="icon ion-skip-backward sop-white-icon sop-icon-20 m-5"
+                        ng-click="VideoCtrl.reverse('fs')">
+                    </i>
+                    <input
+                        type=number
+                        ng-model="VideoCtrl.seekNumber"
+                        class="seek-number m-5"
+                        max=5
+                        min=1
+                    />
+                    <i 
+                        class="icon ion-skip-forward sop-white-icon sop-icon-20 m-5"
+                        ng-click="VideoCtrl.forward('fs')">
+                    </i>
+	                <i
+	                    class="icon ion-checkmark-round sop-white-icon sop-icon-20 m-5"
+	                    ng-show="VideoCtrl.hasCrispStarted"
+	                    ng-click="VideoCtrl.endCrisp(VideoCtrl.fullScreen.progressBar.value)">
+	                </i>
+	            	<rzslider
+			    		id="{{VideoCtrl.fullScreen.progressBar.options.id}}"
+			    		rz-slider-model="VideoCtrl.fullScreen.progressBar.value"
+			    		rz-slider-options="VideoCtrl.fullScreen.progressBar.options">
+			    	</rzslider>
+	                <i 
+		                class="icon ion-android-download sop-white-icon sop-icon-20 m-5"
+		                ng-click="VideoCtrl.saveCrisps()">        
+		            </i>
+		        </div>
+		        <!-- <div class="row">
+		        	<div
+		        		class="pull-up"
+		        		ng-click="VideoCtrl.fullScreen.pauseVideo(); 	VideoCtrl.openModal('crispsList'); FullScreenCtrl.showCrispsList()">
+		        		<span class="icon ion-chevron-up"></span>
+		        	</div>
+		        </div> -->
+		        <div>
+		        	<div
+		        		class="round-btn-overlay"
+		        		ng-click="VideoCtrl.fullScreen.pauseVideo(); 	VideoCtrl.openModal('crispsList'); FullScreenCtrl.showCrispsList()">
+  						<i class="icon ion-android-more-horizontal sop-icon-20"></i>
+					</div>
+		        </div>
+			</div>
+		</div>
+	</ion-content>
+</ion-modal-view>

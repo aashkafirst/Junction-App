@@ -1,0 +1,40 @@
+.fs-modal {
+	width : 100%; 
+	left : 0%; 
+	right : 0%; 
+	top : 0%; 
+	bottom : 0%;
+
+	.embed-responsive.embed-responsive-16by9 {
+	  padding-bottom: 40%;
+	}
+
+	.corner-btn {
+		z-index : 25679;
+		position : absolute;
+		right : 0;
+	}
+
+	.fs-player {
+		height: 100%;
+	}
+
+	.player-controls-container {
+		margin-top: -0px;
+		height: 65px;
+	}
+
+	.duration {
+		width: 85px;
+	}
+
+	.rzslider {
+		margin: 10px 10px 15px 5px;
+	}
+
+	.crisps-list-div {
+		text-align: center;
+		margin-top: -5px;
+	}
+
+}
