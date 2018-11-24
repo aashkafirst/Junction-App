@@ -105,6 +105,9 @@ function HomeController($scope, $timeout, $rootScope, $ionicPlatform, $ionicHist
 				duration : linkData.duration,
 				picUrl : linkData.$og_image_url
 			};
+			for(var i = 0 ; i < vm.sharedWithUCrisp.crisps.length ; i++) {
+				vm.sharedWithUCrisp.crisps[i].annotation = VideoService.convertTimeToHMS(vm.sharedWithUCrisp.duration);
+			}
 			console.log(JSON.stringify(vm.sharedWithUCrisp));
 			screen.orientation.lock('landscape');
 			ModalService.open($scope, 'sharedWithU');
@@ -146,6 +149,9 @@ function HomeController($scope, $timeout, $rootScope, $ionicPlatform, $ionicHist
 				crisps : sop.data.crisps,
 				duration : sop.data.duration
 			};
+			for(var i = 0 ; i < vm.sop.crisps.length ; i++) {
+				vm.sop.crisps[i].annotation = VideoService.convertTimeToHMS(vm.sop.duration);
+			}
 			console.log(JSON.stringify(vm.sop.crisps));
 			screen.orientation.lock('landscape');
 			ModalService.open($scope, 'sop');
