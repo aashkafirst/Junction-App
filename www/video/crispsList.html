@@ -1,0 +1,59 @@
+<ion-modal-view 
+	class="crisps-list-modal"
+	ng-class="{ 'fullScreen' : VideoCtrl.currentView === 'fullScreen' }"
+	ng-controller="CrispsListController as CrispsListCtrl">
+  <ion-header-bar class="header">
+	<div class="col col-30">
+		<p>Crisps</p>
+	</div>
+	<div class="col col-10">
+		<i
+			class="icon ion-close-circled sop-icon-20"
+			ng-click="CrispsListCtrl.close()">
+		</i>
+	</div>
+  </ion-header-bar>
+  <ion-content>
+	<ion-scroll>
+	  	<div class="row">
+	  		<div class="col col-10 lr-container">
+			    <i class="icon ion-android-arrow-dropleft-circle sop-icon-20"
+			            ng-click="CrispsListCtrl.previous()">
+			    </i>
+	  		</div>
+		  	<div class="col col-80">
+			  	<ion-slide-box  delegate-handle="crisps-list"
+			  					show-pager="false"
+			                	on-slide-changed="CrispsListCtrl.slideChanged(index)">
+				  	<ion-slide ng-repeat="displayCrisp in VideoCtrl.displayCrisps" >
+				    	<div class="card crisps-card">
+						  <div class="item item-divider crisps-divider">
+						  	<div class="row">
+						  		<div class="col col-70">
+						  			{{displayCrisp.start}}-{{displayCrisp.end}}		
+						  		</div>
+						  		<div class="col col-30">	
+						  			<i 
+							            class="icon ion-play"
+							            ng-style='{ "color" : "#" + displayCrisp.css.color }'
+							            ng-click="VideoCtrl.play($index)">
+							        </i>
+						  		</div>
+						  	</div>
+						  </div>
+						  <div class="item item-text-wrap">
+						    <input type="text" placeholder="Annotation..." ng-model="VideoCtrl.crisps[$index].annotation">
+						  </div>
+						</div>
+				    </ion-slide>
+			  	</ion-slide-box>
+		  	</div>
+			<div class="col col-10 lr-container">
+		        <i class="icon ion-android-arrow-dropright-circle sop-icon-20"
+		                ng-click="CrispsListCtrl.next()"> 
+		        </i>
+	    	</div>	
+	  	</div>
+	</ion-scroll>
+  </ion-content>
+</ion-modal-view>

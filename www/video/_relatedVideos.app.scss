@@ -1,0 +1,36 @@
+.related-videos-container {
+
+    .related-videos-header {
+    	margin-left: 11px;
+    }
+ 
+ 	.title {
+		overflow : hidden; 
+		display : -webkit-box !important; 
+		-webkit-line-clamp : 3 !important;
+		-webkit-box-orient : vertical !important;
+	}
+
+	.button {
+		float : right;
+	}
+
+	.duration span{
+		color : white;
+   		font : bold 12px/33px Helvetica, Sans-Serif;
+   		letter-spacing : -1px;
+   		background : rgb(0, 0, 0); /* fallback color */
+   		background : rgba(0, 0, 0, 0.7);
+   		padding : 5px;
+	}
+
+	.duration {
+	   position : absolute;
+	   bottom : 3%;
+	}
+
+	.button-text {
+		font-size: 15px;
+	}
+
+}

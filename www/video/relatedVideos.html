@@ -1,0 +1,47 @@
+<div 
+    class="related-videos-container"
+    ng-controller="RelatedVideosController as RelatedVideosCtrl">
+    <h4 class="related-videos-header">Related videos:</h4>    
+    <div class="list card" ng-repeat="relatedVideo in VideoCtrl.relatedVideos track by $index">
+        <div class="row">
+            <div class="col item-image">
+                <a 
+                    href="#/app/home/{{relatedVideo.id.videoId}}"
+                    ng-click="RelatedVideosCtrl.getVideoPicUrl(relatedVideo.snippet.thumbnails.high.url)">
+                    <img 
+                        ng-src="{{relatedVideo.snippet.thumbnails.high.url}}"
+                        width="105%"
+                        height="95%">
+                </a>
+                <p class="duration">
+                    <span>
+                        {{relatedVideo.duration.hours}}&nbsp;&nbsp;:
+                        {{relatedVideo.duration.minutes}}&nbsp;&nbsp;:
+                        {{relatedVideo.duration.seconds}}
+                    </span>
+                </p>
+            </div>
+            <div class="col">
+                <a 
+                    href="#/app/home/{{relatedVideo.id.videoId}}"
+                    ng-click="RelatedVideosCtrl.getVideoPicUrl(relatedVideo.snippet.thumbnails.high.url)">
+                    <p class="title">
+                        {{relatedVideo.snippet.title}}
+                    </p>
+                </a>
+                <button 
+                    class="button button-small button-default button-round button-royal" ng-reflect-round=""
+                    ng-click="VideoCtrl.summarize(relatedVideo.id)">
+                    <span class="button-text">
+                        Sop
+                    </span>
+                    <ion-button-effect></ion-button-effect>
+                </button>
+            </div>
+        </div> 
+    </div>
+    <ion-infinite-scroll
+        on-infinite="RelatedVideosCtrl.loadMoreVideos()"
+        distance="10%">
+    </ion-infinite-scroll>   
+</div>

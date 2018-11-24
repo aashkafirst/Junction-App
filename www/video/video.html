@@ -1,0 +1,110 @@
+<ion-view view-title="ShortOkPlz!">
+  <ion-content overflow-scroll="true">
+    <div ng-if="($root.isOnline !== null) && !$root.isOnline">
+        <img src="img/noInternet.png" class="no-internet-portrait">
+    </div>
+    <div ng-if="$root.isOnline">
+        <div class="embed-responsive embed-responsive-16by9">
+        	<youtube-video
+                player="videoPlayer"
+        		class="embed-responsive-item"
+        		video-id="VideoCtrl.videoId"
+        		player-vars="VideoCtrl.videoVars">
+        	</youtube-video>
+        </div>
+        <div class="player-controls-container" ng-if="VideoCtrl.isPlayerReady">
+        	<rzslider
+        		id="{{VideoCtrl.progressBar.options.id}}"
+        		rz-slider-model="VideoCtrl.progressBar.value"
+        		rz-slider-options="VideoCtrl.progressBar.options">
+        	</rzslider>
+            <div class="row">
+                <div class="col col-10">
+                    <i 
+                    class="icon ion-play sop-white-icon sop-icon-20"
+                    ng-show="VideoCtrl.isPaused"
+                    ng-click="VideoCtrl.playVideo()">
+                    </i>
+                    <i 
+                        class="icon ion-pause sop-white-icon sop-icon-20"
+                        ng-show="!VideoCtrl.isPaused"
+                        ng-click="VideoCtrl.pauseVideo()">
+                    </i>  
+                </div>
+                <div class="col col-25">
+                    <p class="duration">
+                        {{VideoCtrl.player.currentTime}} / {{VideoCtrl.player.duration}}   
+                    </p>  
+                </div>
+                <div class="create-crisp-div">
+                    <i
+                        class="icon ion-plus-round sop-white-icon sop-icon-20"
+                        ng-show="!VideoCtrl.hasCrispStarted"
+                        ng-click="VideoCtrl.startCrisp(VideoCtrl.progressBar)">
+                    </i>
+                    <i
+                        class="icon ion-checkmark-round sop-white-icon sop-icon-20"
+                        ng-show="VideoCtrl.hasCrispStarted"
+                        ng-click="VideoCtrl.endCrisp(VideoCtrl.progressBar.value)">
+                    </i>
+                </div>
+                <div class="col col-5">
+                    <i 
+                        class="icon ion-skip-backward sop-white-icon sop-icon-20"
+                        ng-click="VideoCtrl.reverse('normal')">
+                    </i>
+                </div>
+                <div class="col col-15">
+                    <input
+                        type=number
+                        ng-model="VideoCtrl.seekNumber"
+                        class="seek-number"
+                        max=5
+                        min=1
+                    />
+                </div>
+                <div class="col col-5">
+                    <i 
+                        class="icon ion-skip-forward sop-white-icon sop-icon-20"
+                        ng-click="VideoCtrl.forward('normal')">
+                    </i>
+                </div>
+                <div class="col col-10">
+                    <i 
+                        class="icon ion-android-expand sop-white-icon sop-icon-20"
+                        ng-click="VideoCtrl.goFullScreen()">
+                    </i>
+                </div>
+            </div>
+    	</div>
+        <div
+            class="row crisp-controls-container"
+            ng-show="VideoCtrl.isPlayerReady">
+            <div class="col col-35"></div> <!-- empty div -->
+            <div
+                class="round-btn-overlay"
+                ng-click="VideoCtrl.pauseVideo(); VideoCtrl.openModal('crispsList')">
+                <i class="icon ion-android-more-horizontal sop-icon-20"></i>    
+            </div>
+            <div class="col col-30 save-n-share-div">
+                <i 
+                    class="icon ion-android-download sop-icon-20"
+                    ng-click="VideoCtrl.saveCrisps()">        
+                </i>
+                <i 
+                    class="icon ion-android-share-alt sop-icon-20"
+                    ng-click="VideoCtrl.shareCrisps()">        
+                </i>
+            </div>
+        </div>
+        <div 
+            class="spinner"
+            ng-show="!VideoCtrl.gotRelatedVideos">
+        </div>
+        <div 
+            ng-include="'./video/relatedVideos.html'"
+            ng-show="VideoCtrl.gotRelatedVideos">
+        </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,54 @@
+.crisps-list-modal, .fullScreen {
+	
+	// min-height: 100px; 
+	// top: 268px; 
+	// bottom: 300px;
+
+	min-height: 6px; 
+	height: 161px;
+    top: 70px;
+	
+    .lr-container {
+    	margin-top: 6%;
+    }
+
+	.header {
+		height: 30px;	
+	}
+
+	.footer {
+		height: 24px;
+	}
+	
+	.ion-close-circled {
+		float: right;
+	}
+
+	.slide {
+		height: 90px;
+	}
+
+	.crisps-card {
+		margin: 0 0 0 0;
+	}
+
+	.crisps-divider {
+		min-height: 25px;
+		height: 25px;
+	}
+
+	.row {
+		margin-top: -13px;
+	}
+
+}
+
+.fullScreen {
+	left: 0px;
+	width: 100%;
+	top: -10px;
+}
+
+.keep-above {
+	z-index: 99;
+}
