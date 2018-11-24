@@ -1,0 +1,57 @@
+<ion-view view-title="WiqPips!" class="my-crisps">
+  <ion-content>
+  	<div layout = "row" layout-align = "center" layout-wrap = "">
+  		<div ng-if="($root.isOnline !== null) && !$root.isOnline">
+  			<img src="img/noInternet.png" class="no-internet-portrait">
+  		</div>
+  		<div ng-if="$root.isOnline">
+	    	<div ng-if = "!MyCrispsCtrl.myCrispsAvailable">
+				<h2>{{MyCrispsCtrl.msg}}</h2>
+			</div>
+			<div
+				class = "item-image"
+				ng-if = "!MyCrispsCtrl.myCrispsAvailable">
+				<img ng-src="/img/LoginImage.jpg">
+			</div>
+
+		    <div
+		    	class = "list card"
+		    	ng-if = "MyCrispsCtrl.myCrispsAvailable"
+		    	ng-repeat = "myCrisp in MyCrispsCtrl.myCrispsList" >
+		    	<div class = "item item-text-wrap">
+		        	<a ng-click="MyCrispsCtrl.playMyCrisps(
+		        					myCrisp.youtube.id, 
+		        					myCrisp.highlights,
+		        					myCrisp.duration,
+		        					myCrisp.youtube.snippet.thumbnails.high.url
+		        				)">
+						<h3> {{myCrisp.youtube.snippet.title}} </h3>
+					</a>
+					<i
+						class="icon ion-trash-b sop-icon-20"
+						ng-click="MyCrispsCtrl.deleteMyCrisp(myCrisp.youtube.id, $index)">	
+					</i>
+		      	</div>
+		    	<div class="item-image">
+					<a ng-click="MyCrispsCtrl.playMyCrisps(
+									myCrisp.youtube.id,
+									myCrisp.highlights,
+									myCrisp.duration,
+									myCrisp.youtube.snippet.thumbnails.high.url
+								)">
+						<img class="image" ng-src="{{myCrisp.youtube.snippet.thumbnails.high.url}}">
+					</a>
+			  	</div>
+			    <div>
+					<p class="duration">
+					  	<span>{{myCrisp.youtube.contentDetails.duration.hours}}&nbsp;:
+					  		  {{myCrisp.youtube.contentDetails.duration.minutes}}&nbsp;:
+					  		  {{myCrisp.youtube.contentDetails.duration.seconds}}
+					  	</span>
+				    </p>
+			    </div>
+		    </div>
+		</div>
+	</div>
+  </ion-content>
+</ion-view>
